@@ -13,6 +13,7 @@ nr_letters = int(input("How many letters would you like in your password?\n"))
 nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
 
+# Variant 1
 pass_list = []
 for i in range(0, nr_letters):
     pass_list.append(random.choice(letters))
@@ -25,6 +26,18 @@ pass_symbols = []
 for i in range(0, nr_symbols):
     pass_list.insert(i, random.choice(symbols))
 
+# Shuffle the list of characters randomly
+random.shuffle(pass_list)
+
+# Join the list back into a string
+randomized_string = ''.join(pass_list)
+print(f"Your password is: \033[1m{randomized_string}\033[0m and it's length is: {len(randomized_string)}")
+
+# Variant 2
+# Generate password list using list comprehensions
+pass_list = [random.choice(letters) for _ in range(nr_letters)] + \
+            [random.choice(symbols) for _ in range(nr_symbols)] + \
+            [random.choice(numbers) for _ in range(nr_numbers)]
 
 # Shuffle the list of characters randomly
 random.shuffle(pass_list)

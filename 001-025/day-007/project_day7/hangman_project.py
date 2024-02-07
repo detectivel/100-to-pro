@@ -9,7 +9,6 @@ the_hangman = art.hangman_guesses  # The art of hangman
 display = ['_'] * len(word_to_guess)  # Initialize display with underscores
 guessed_letters = []  # Keep track of guessed letters
 tries = 0  # Number of tries used
-print(word_to_guess)
 
 print("Wellcome to Hangman! Hope you will enjoy this game!")
 while tries < len(the_hangman):

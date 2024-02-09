@@ -3,7 +3,7 @@ import art
 import random
 
 # Initialization of resources
-total_word_letters = random.randint(5, 12)
+total_word_letters = random.randint(5, 12) # Set here minimum and maximum word length
 word_to_guess = random_word.generate_word(total_word_letters)
 the_hangman = art.hangman_guesses  # The art of hangman
 display = ['_'] * len(word_to_guess)  # Initialize display with underscores

@@ -3,7 +3,7 @@ from faker import Faker
 fake = Faker()
 
 
-# Function to generate a word with a minimum length of 7 letters
+# Function to generate a word
 
 def generate_word(letters):
     while True:

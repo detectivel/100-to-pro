@@ -2,7 +2,7 @@
 
 import detect_language as detect
 
-direction = input("Type 'encrypt' or 'decrypt'")
+direction = input("Type 'encrypt' or 'decrypt': ")
 text = input("Type your message:\n")
 shift = int(input("Type the shift number:\n"))
 

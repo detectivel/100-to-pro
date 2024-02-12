@@ -15,17 +15,16 @@ def caesar_cipher(input_text, input_shift, input_direction):
         print("Cannot determine the alphabet of the input text.")
         return input_text
 
-    n = len(alphabet) // 2  # Length of alphabet including caps
+    n = len(alphabet)  # Using full length of alphabet
     encrypted_text = ""
     new_index = 0
     for letter in input_text:
         if letter in alphabet:
             index = alphabet.index(letter)
-            base = index // n * n  # Start of alphabet for current case
             if input_direction == 'encrypt':
-                new_index = (index + input_shift) % n + base
+                new_index = (index + input_shift) % n
             elif input_direction == 'decrypt':
-                new_index = (index - input_shift + n) % n + base
+                new_index = (index - input_shift + n) % n
             new_letter = alphabet[new_index]
             encrypted_text += new_letter
         else:

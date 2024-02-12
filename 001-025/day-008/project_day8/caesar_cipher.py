@@ -1,18 +1,6 @@
 # Caesar Cipher program
 
-print("Welcome to the Caesar Cipher encryption Program!")
-
-# Generate uppercase letters (A-Z)
-uppercase_letters = [chr(i) for i in range(65, 91)]
-
-# Generate lowercase letters (a-z)
-lowercase_letters = [chr(i) for i in range(97, 123)]
-
-# Generate numbers (0-9) as characters
-number_characters = [chr(i) for i in range(48, 58)]
-
-# Optionally, combine both lists if you want all letters in one list
-all_letters = uppercase_letters + lowercase_letters
+import detect_language as detect
 
 direction = input("Type 'encrypt' or 'decrypt'")
 text = input("Type your message:\n")
@@ -20,27 +8,26 @@ shift = int(input("Type the shift number:\n"))
 
 
 def caesar_cipher(input_text, input_shift, input_direction):
-    encrypted_text = ""
-    for letter in input_text:
-        if letter in uppercase_letters:
-            alphabet = uppercase_letters
-        elif letter in lowercase_letters:
-            alphabet = lowercase_letters
-        else:
-            # If the character is not in the lists, add it directly to the encrypted_text.
-            encrypted_text += letter
-            continue
-        # Find the new position with wrapping
-        position = alphabet.index(letter)
-        if input_direction == 'encrypt':
-            new_position = (position + input_shift) % len(alphabet)
-        elif input_direction == 'decrypt':
-            new_position = (position - input_shift) % len(alphabet)
-        else:
-            return "Invalid direction. Choose 'encrypt' or 'decrypt'."
+    alphabet = detect.detect_alphabet(input_text)
+    if alphabet is None:
+        print("Cannot determine the alphabet of the input text.")
+        return input_text
 
-        new_letter = alphabet[new_position]
-        encrypted_text += new_letter
+    n = len(alphabet) // 2  # Length of alphabet including caps
+    encrypted_text = ""
+    new_index = 0
+    for letter in input_text:
+        if letter in alphabet:
+            index = alphabet.index(letter)
+            base = index // n * n  # Start of alphabet for current case
+            if input_direction == 'encrypt':
+                new_index = (index + input_shift) % n + base
+            elif input_direction == 'decrypt':
+                new_index = (index - input_shift + n) % n + base
+            new_letter = alphabet[new_index]
+            encrypted_text += new_letter
+        else:
+            encrypted_text += letter
 
     return encrypted_text
 

@@ -1,7 +1,9 @@
 # Caesar Cipher program
 
 import detect_language as detect
+from art import logo
 
+print(logo)
 direction = input("Type 'encrypt' or 'decrypt': ").lower()
 text = input("Type your message:\n")
 shift = int(input("Type the shift number:\n"))

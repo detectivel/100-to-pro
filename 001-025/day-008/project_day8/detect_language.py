@@ -19,4 +19,6 @@ def detect_alphabet(input_text):
             # Spanish
             elif char in 'Ññ':
                 return lang.spanish_alphabet
+            elif ord('א') <= ord(char) <= ord('ת'):
+                return lang.hebrew_alphabet
     return None

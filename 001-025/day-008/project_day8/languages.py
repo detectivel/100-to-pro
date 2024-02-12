@@ -16,3 +16,6 @@ french_alphabet = eng_alphabet + 'ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜÝàâæçéèê
 
 # Spanish alphabet (adding Ññ and using the same base letters as in english)
 spanish_alphabet = eng_alphabet + 'Ññ'
+
+# Hebrew
+hebrew_alphabet = generate_alphabet(1488, 1514)

@@ -14,11 +14,18 @@ def multiply(n1, n2):
 
 
 def divide(n1, n2):
-    """Returns the division of n1 by n2. Raises ZeroDivisionError for n2 = 0."""
-    try:
-        return n1 / n2
-    except ZeroDivisionError:
-        raise ValueError("Cannot divide by zero")
+    """Returns the division of n1 by n2."""
+    return n1 / n2
+
+
+def sqrt(n1):
+    """Returns the square root of n1."""
+    return n1 ** 0.5
+
+
+def power(n1, n2):
+    """Returns n1 raised to the power of n2."""
+    return n1 ** n2
 
 
 operations = {
@@ -26,4 +33,6 @@ operations = {
     "-": subtract,
     "*": multiply,
     "/": divide,
+    "^": power,
+    "sqrt": sqrt,  # Note: This operation only needs one number
 }
